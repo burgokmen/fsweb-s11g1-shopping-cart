@@ -1,17 +1,22 @@
-import { createContext, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const initialCart = () => JSON.parse(localStorage.getItem("cart")) || [];
+  const [cart, setCart] = useState(initialCart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addItem = (item) => {
     // verilen itemi sepete ekleyin
+
     return !cart.find((i) => i === item) ? setCart([...cart, item]) : null;
   };
   const removeItem = (id) => {
     // verilen itemi sepete ekleyin
-    return setCart(cart.filter((i) => i.id !== id));
+    setCart(cart.filter((i) => i.id !== id));
   };
 
   return (
