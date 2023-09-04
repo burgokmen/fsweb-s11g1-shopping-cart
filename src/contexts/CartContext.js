@@ -10,12 +10,9 @@ const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addItem = (item) => {
-    // verilen itemi sepete ekleyin
-
     return !cart.find((i) => i === item) ? setCart([...cart, item]) : null;
   };
   const removeItem = (id) => {
-    // verilen itemi sepete ekleyin
     setCart(cart.filter((i) => i.id !== id));
   };
 
