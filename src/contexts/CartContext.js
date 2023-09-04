@@ -9,9 +9,13 @@ const CartProvider = ({ children }) => {
     // verilen itemi sepete ekleyin
     return !cart.find((i) => i === item) ? setCart([...cart, item]) : null;
   };
+  const removeItem = (id) => {
+    // verilen itemi sepete ekleyin
+    return setCart(cart.filter((i) => i.id !== id));
+  };
 
   return (
-    <CartContext.Provider value={{ cart, addItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem }}>
       {children}
     </CartContext.Provider>
   );
