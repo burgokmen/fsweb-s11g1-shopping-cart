@@ -13,6 +13,7 @@ function App() {
 
   const addItem = (item) => {
     // verilen itemi sepete ekleyin
+    return !cart.find((i) => i === item) ? setCart([...cart, item]) : null;
   };
 
   return (
