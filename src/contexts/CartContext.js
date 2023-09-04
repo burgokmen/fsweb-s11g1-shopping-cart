@@ -1,7 +1,20 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const CardContext = createContext();
+export const CartContext = createContext();
 
-const CardProvider = () => {
-  return <CardContext.Provider value={{ cart }}></CardContext.Provider>;
+const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+
+  const addItem = (item) => {
+    // verilen itemi sepete ekleyin
+    return !cart.find((i) => i === item) ? setCart([...cart, item]) : null;
+  };
+
+  return (
+    <CartContext.Provider value={{ cart, addItem }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
+
+export default CartProvider;

@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import ProductProvider from "./contexts/ProductContext";
 
 import "./index.css";
+import CardProvider from "./contexts/CartContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ProductProvider>
-      <App />
+      <CardProvider>
+        <App />
+      </CardProvider>
     </ProductProvider>
   </BrowserRouter>
 );

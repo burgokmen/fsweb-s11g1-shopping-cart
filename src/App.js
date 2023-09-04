@@ -9,7 +9,7 @@ import ShoppingCart from "./components/ShoppingCart";
 function App() {
   return (
     <div className="App">
-      <Navigation cart={cart} />
+      <Navigation />
 
       {/* Routelar */}
       <main className="content">
@@ -18,7 +18,7 @@ function App() {
         </Route>
 
         <Route path="/cart">
-          <ShoppingCart cart={cart} />
+          <ShoppingCart />
         </Route>
       </main>
     </div>
